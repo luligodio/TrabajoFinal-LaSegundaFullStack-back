@@ -1,0 +1,65 @@
+[{
+        "nombre": "Nuggets & Barbecue",
+        "Ingredientes": "Pechuguitas Adobadas con Mix de Especias y Empanizadas.Con Cazuela de Barbacoa Casera y Fritas ",
+        "precio": "1100"
+    },
+    {
+        "nombre": "Bastones de Mozzarella",
+        "Ingredientes": "5 Bastones de Mozzarella Empanizados y Cazuela de Salsa Pomodoro ",
+        "precio": "1100"
+    },
+    {
+        "nombre": "Buffalo Chicken Wings",
+        "Ingredientes": "Alitas Fritas Glaseadas con Siracha Picante, Manteca y Miel. Con Fritas y Dip de Sour Cream y Blue Cheese.",
+        "precio": "1250"
+    },
+    {
+        "nombre": "BBQ Chicken Wings",
+        "Ingredientes": "Alitas de Pollo Fritas Gratinadas con Salsa Barbacoa de la Casa. Con Fritas y Dip de Queso Crema con Ciboullette.",
+        "precio": "1250"
+    },
+    {
+        "nombre": "Nachos Ándale Guero! ",
+        "Ingredientes": "Nachos Caseros Fritos con Salsa deCarne Picada , Panceta y Porotos Picantes, Salsa Cheddar y Guacamole Casero.",
+        "precio": "1200"
+    }, {
+        "nombre": "Nachos luna",
+        "Ingredientes": "Nachos Caseros con Dips de Queso Crema con Ciboullette, Queso Cheddar y Guacamole Casero.",
+        "precio": "1050"
+    },
+    {
+        "nombre": "Nachos con Cheddar",
+        "Ingredientes": "Nachos Caseros con Dip de Queso Cheddar.",
+        "precio": "950"
+    },
+    {
+        "nombre": "Papas Fritas",
+        "Ingredientes": "Papas Fritas",
+        "precio": "700"
+    },
+    {
+        "nombre": "Papas Provenzal",
+        "Ingredientes": "Papas Fritas con Aderezo de Perejil, Ajo yAceite de Oliva. ",
+        "precio": "750"
+    },
+    {
+        "nombre": "Papas a Caballo! ",
+        "Ingredientes": "Papas Fritas con 2 Huevos Fritos.",
+        "precio": "900"
+    },
+    {
+        "nombre": "Papas Cheddar",
+        "Ingredientes": "Papas Fritas Bañadas en Queso Cheddar.",
+        "precio": "950"
+    },
+    {
+        "nombre": "Papas Bacon",
+        "Ingredientes": "Papas Fritas con Panceta Ahumada en Cubos, Queso Crema y Cebolla de Verdeo.",
+        "precio": "1100"
+    },
+    {
+        "nombre": "Papas Bacon+Cheddar",
+        "Ingredientes": "Papas Fritas con Panceta Ahumada en Cubos, Queso Crema y Cebolla de Verdeo y Bañadas con Queso Cheddar",
+        "precio": "1200"
+    }
+]

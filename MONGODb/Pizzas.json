@@ -1,0 +1,51 @@
+[{
+        "nombre": "Pizza Mozzarella",
+        "Ingredientes": "Mozzarella.",
+        "precio": "1500"
+    },
+    {
+        "nombre": "Pizza Jamón",
+        "Ingredientes": "Mozzarella y Jamón. ",
+        "precio": "1700"
+    },
+    {
+        "nombre": "Pizza Jamón y Tomate",
+        "Ingredientes": "Jamón Cocido, Rodajas de Tomate,Mozzarella.",
+        "precio": "1800"
+    },
+    {
+        "nombre": "Pizza Jamón y Morrón",
+        "Ingredientes": "Jamón Cocido, Morrones asados,Mozzarella. ",
+        "precio": "1900"
+    },
+    {
+        "nombre": "Pizza Napolitana",
+        "Ingredientes": "Tomate, Ajo, Perejil y Oliva.",
+        "precio": "1700"
+    },
+    {
+        "nombre": "Pizza Pancetta e Scalogno",
+        "Ingredientes": "Panceta, Cebolla de Verdeo, Mozzarella.",
+        "precio": "1800"
+    },
+    {
+        "nombre": "Pizza Pomodori e Rucola",
+        "Ingredientes": "Tomates Secos, Rúcula, Parmesano,Mozzarella ",
+        "precio": "1800"
+    },
+    {
+        "nombre": "Pizza Tomate y Albahaca",
+        "Ingredientes": "Rodajas de Tomate, Hojitas de Albahaca y Mozzarella.",
+        "precio": "1700"
+    },
+    {
+        "nombre": "Pizza Fugazzeta",
+        "Ingredientes": "Mozzarella, Cebolla, Cebolla Morada y Aceite de Oliva.",
+        "precio": "1600"
+    },
+    {
+        "nombre": "Pizza Salvaje",
+        "Ingredientes": "Jamón Crudo, Rúcula,Parmesano, y Mozzarella. ",
+        "precio": "2000"
+    }
+]
