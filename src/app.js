@@ -1,28 +1,4 @@
-const mysql = require('mysql');
-
-
-const Conexion = mysql.createConnection({
-    host: 'localhost',
-    database: 'sql10516263',
-    user: 'root',
-    password: '',
-
-});
-
-Conexion.connect(function(error) {
-    if (error) {
-        throw error
-    } else {
-        console.log('CONNECTION SUCCESSFUL')
-    }
-
-});
-
-Conexion.end();
-
-
-
-/*const app = require('./server');
+const app = require('./server');
 const http = require('http').createServer(app);
 const { sequelize } = require('./database/models/index');
 
@@ -35,4 +11,4 @@ http.listen(PORT, () => {
     }).catch(error => {
         console.log('Se ha producido un error', error);
     })
-});*/
+});
