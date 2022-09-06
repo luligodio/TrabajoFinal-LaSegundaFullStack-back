@@ -1,57 +1,64 @@
 const express = require('express')
 const router = express.Router()
-const { isAuthenticated} = require('../controllers/index.controller');
-const { find, findAll, store, update, destroy, isExist, policy } = require('../controllers/news.controller');
-const { validateNews } = require('../validators/news');
+const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/bebidas_sin.controller');
+const { isAuthenticated } = require('../controllers/index.controller');
+const { validatebebidas_sin } = require('../validators/bebidas_sins');
 
 /**
  * @openapi
  * path:
- * /news/find/all:
+ * /drinks_wa/find/all:
  *  get:
- *    description: Trae todas las noticias
- *    summary: Trae todas las noticias
+ *    description: Trae todas las bebidas sin alcohol
+ *    summary: Trae todas las bebidas sin alcohol
  *    tags:
- *      - news
+ *      - drinks_wa
  *    responses:
  *        200:
  *         description: Regresa el token en el header.
  *        400:
- *          description: No hay noticiaes.
+ *          description: No hay bebidas sin alcohol.
  */
 router.get('/find/all', findAll);
 
 /**
  * @openapi
  * path:
- * /news/find/{id}:
+ * /drinks_wa/find/{id}:
  *  get:
- *    description: Trae una noticia especifica por ID
- *    summary: Trae una noticia especifica por ID
+ *    description: Trae una bebida sin alcohol especifica por ID
+ *    summary: Trae una bebida sin alcohol especifica por ID
  *    tags:
- *      - news
+ *      - drinks_wa
  *    responses:
  *        200:
  *         description: Regresa el token en el header.
  *        400:
- *          description: No se encontro ninguna noticia.
+ *          description: No se encontro ninguna bebida sin alcohol.
+ *    parameters:
+ *        - in: path
+ *          name: id
+ *          required: true
+ *          schema:
+ *              type: int(11)
+ *          description: ID de la bebida sin alcohol
  */
 router.get('/find/:id', isExist, find);
 
 /**
  * @openapi
  * path:
- * /news:
+ * /drinks_wa:
  *   post:
- *      description: Crea una noticia
- *      summary: Crea una noticia
+ *      description: Crea una bebida sin alcohol
+ *      summary: Crea una bebida sin alcohol
  *      tags:
- *        - news
+ *        - drinks_wa
  *      responses:
  *        200:
  *          description: Regresa el token en el header
  *        400:
- *          description: Ha ocurrido un error al crear la noticia
+ *          description: Ha ocurrido un error al crear la bebida sin alcohol
  *        401:
  *          description: El usuario no tiene los permisos necesarios
  *      requestBody:
@@ -65,39 +72,27 @@ router.get('/find/:id', isExist, find);
  *                  type: string
  *                  format: varchar(50)
  *                  example: ejemplo
- *                content:
- *                  type: string
- *                  format: varchar
- *                  example: ejemplo
- *                category_id:
- *                  type: integer
- *                  format: int(50)
- *                  example: 1
  *                created_by:
  *                  type: integer
- *                  format: int(100)
+ *                  format: int(11)
  *                  example: 1
- *                idNotificable:
- *                  type: bool
- *                  format: bool
- *                  example: true
  */
-router.post('/', isAuthenticated, validateNews, store);
+router.post('/', isAuthenticated, validatebebidas_sin, store);
 
 /**
  * @openapi
  * path:
- * /news/{id}:
+ * /drinks_wa/{id}:
  *   put:
- *      description: Actualiza una noticia por el id
- *      summary: Actualiza una noticia por el id
+ *      description: Actualiza una bebida sin alcohol por el id
+ *      summary: Actualiza una bebida sin alcohol por el id
  *      tags:
- *        - news
+ *        - drinks_wa
  *      responses:
  *        201:
  *          description: Regresa el token en el header
  *        400:
- *          description: Ha ocurrido un error al actualizar la noticia
+ *          description: Ha ocurrido un error al actualizar la bebida sin alcohol
  *        401:
  *          description: El usuario no tiene los permisos necesarios
  *      parameters:
@@ -106,7 +101,7 @@ router.post('/', isAuthenticated, validateNews, store);
  *          required: true
  *          schema:
  *              type: int
- *          description: ID de la noticia
+ *          description: ID de la bebida sin alcohol
  *      requestBody:
  *        required: true
  *        content:
@@ -114,38 +109,26 @@ router.post('/', isAuthenticated, validateNews, store);
  *            schema:
  *              type: object
  *              properties:
- *                name:
+ *                title:
  *                  type: string
  *                  format: varchar(50)
  *                  example: ejemplo
- *                content:
- *                  type: string
- *                  format: varchar
- *                  example: ejemplo
- *                category_id:
- *                  type: integer
- *                  format: int(50)
- *                  example: 1
  *                created_by:
  *                  type: integer
  *                  format: int(100)
  *                  example: 1
- *                idNotificable:
- *                  type: bool
- *                  format: bool
- *                  example: true
  */
-router.put('/:id', isAuthenticated, isExist, validateNews, policy, update);
+router.put('/:id', isAuthenticated, isExist, validatebebidas_sin, policy, update);
 
-/**
+/** 
  * @openapi
  * path:
- * /news/{id}:
+ * /drinks_wa/{id}:
  *   delete:
- *     description: Elimina una noticia
- *     summary: Elimina una noticia
+ *     description: Elimina una bebida sin alcohol
+ *     summary: Elimina una bebida sin alcohol
  *     tags:
- *       - news
+ *       - drinks_wa
  *     responses:
  *       200:
  *         description: Regresa el token en el header
@@ -157,7 +140,7 @@ router.put('/:id', isAuthenticated, isExist, validateNews, policy, update);
  *          required: true
  *          schema:
  *              type: int(11)
- *          description: ID de la noticia a eliminar
+ *          description: ID de la bebida sin alcohol a eliminar
  */
 router.delete('/:id', isAuthenticated, isExist, policy, destroy);
 
