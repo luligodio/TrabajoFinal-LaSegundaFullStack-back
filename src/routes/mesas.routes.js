@@ -1,64 +1,64 @@
 const express = require('express')
 const router = express.Router()
-const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/bebidas_sin.controller');
+const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/mesas.controller');
 const { isAuthenticated } = require('../controllers/index.controller');
-const { validatebebidas_sin } = require('../validators/bebidas_sin');
+const { validatemesas } = require('../validators/mesas');
 
 /**
  * @openapi
  * path:
- * /drinks_wa/find/all:
+ * /table/find/all:
  *  get:
- *    description: Trae todas las bebidas sin alcohol
- *    summary: Trae todas las bebidas sin alcohol
+ *    description: Trae todas las mesas
+ *    summary: Trae todas las mesas
  *    tags:
- *      - drinks_wa
+ *      - table
  *    responses:
  *        200:
  *         description: Regresa el token en el header.
  *        400:
- *          description: No hay bebidas sin alcohol.
+ *          description: No hay mesas.
  */
 router.get('/find/all', findAll);
 
 /**
  * @openapi
  * path:
- * /drinks_wa/find/{id}:
+ * /table/find/{id}:
  *  get:
- *    description: Trae una bebida sin alcohol especifica por ID
- *    summary: Trae una bebida sin alcohol especifica por ID
+ *    description: Trae una mesa especifica por ID
+ *    summary: Trae una mesa especifica por ID
  *    tags:
- *      - drinks_wa
+ *      - table
  *    responses:
  *        200:
  *         description: Regresa el token en el header.
  *        400:
- *          description: No se encontro ninguna bebida sin alcohol.
+ *          description: No se encontro ninguna mesa.
  *    parameters:
  *        - in: path
  *          name: id
  *          required: true
  *          schema:
  *              type: int(11)
- *          description: ID de la bebida sin alcohol
+ *          description: ID de la mesa
  */
 router.get('/find/:id', isExist, find);
 
 /**
  * @openapi
  * path:
- * /drinks_wa:
+ * /table:
  *   post:
- *      description: Crea una bebida sin alcohol
- *      summary: Crea una bebida sin alcohol
+ *      description: Crea una mesa
+ *      summary: Crea una mesa
  *      tags:
- *        - drinks_wa
+ *        - table
  *      responses:
  *        200:
  *          description: Regresa el token en el header
  *        400:
- *          description: Ha ocurrido un error al crear la bebida sin alcohol
+ *          description: Ha ocurrido un error al crear la mesa
  *        401:
  *          description: El usuario no tiene los permisos necesarios
  *      requestBody:
@@ -77,22 +77,22 @@ router.get('/find/:id', isExist, find);
  *                  format: int(11)
  *                  example: 1
  */
-router.post('/', isAuthenticated, validatebebidas_sin, store);
+router.post('/', isAuthenticated, validatemesas, store);
 
 /**
  * @openapi
  * path:
- * /drinks_wa/{id}:
+ * /table/{id}:
  *   put:
- *      description: Actualiza una bebida sin alcohol por el id
- *      summary: Actualiza una bebida sin alcohol por el id
+ *      description: Actualiza una mesa por el id
+ *      summary: Actualiza una mesa por el id
  *      tags:
- *        - drinks_wa
+ *        - table
  *      responses:
  *        201:
  *          description: Regresa el token en el header
  *        400:
- *          description: Ha ocurrido un error al actualizar la bebida sin alcohol
+ *          description: Ha ocurrido un error al actualizar la mesa
  *        401:
  *          description: El usuario no tiene los permisos necesarios
  *      parameters:
@@ -101,7 +101,7 @@ router.post('/', isAuthenticated, validatebebidas_sin, store);
  *          required: true
  *          schema:
  *              type: int
- *          description: ID de la bebida sin alcohol
+ *          description: ID de la mesa
  *      requestBody:
  *        required: true
  *        content:
@@ -118,17 +118,17 @@ router.post('/', isAuthenticated, validatebebidas_sin, store);
  *                  format: int(100)
  *                  example: 1
  */
-router.put('/:id', isAuthenticated, isExist, validatebebidas_sin, policy, update);
+router.put('/:id', isAuthenticated, isExist, validatemesas, policy, update);
 
 /** 
  * @openapi
  * path:
- * /drinks_wa/{id}:
+ * /table/{id}:
  *   delete:
- *     description: Elimina una bebida sin alcohol
- *     summary: Elimina una bebida sin alcohol
+ *     description: Elimina una mesa
+ *     summary: Elimina una mesa
  *     tags:
- *       - drinks_wa
+ *       - table
  *     responses:
  *       200:
  *         description: Regresa el token en el header
@@ -140,7 +140,7 @@ router.put('/:id', isAuthenticated, isExist, validatebebidas_sin, policy, update
  *          required: true
  *          schema:
  *              type: int(11)
- *          description: ID de la bebida sin alcohol a eliminar
+ *          description: ID de la mesa a eliminar
  */
 router.delete('/:id', isAuthenticated, isExist, policy, destroy);
 

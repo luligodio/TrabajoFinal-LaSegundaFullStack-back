@@ -3,7 +3,7 @@ const { validateResult } = require('../helpers/validateHelper');
 
 const validatepizzas = [
 
-    check('title')
+    check('name')
     .exists()
     .isLength({ min: 3 })
     .withMessage('El titulo debe contener mas de 3 caracteres'),
