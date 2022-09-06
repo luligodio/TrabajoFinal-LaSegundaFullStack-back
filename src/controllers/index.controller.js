@@ -110,6 +110,35 @@ const policy = async (req, res, next) => {
     }
   };
 
+  const isAuthenticated = async (req, res, next) => {
+    //Comprobar si existe el token y si esta expirado
+    if (req.cookies.jwt && !isJwtExpired(req.cookies.jwt)) {
+      try {
+        //Leer el token
+        const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET)
+        //Buscar el usuario por el correo
+        const datos = await User.findOne({
+          where: {
+            email: decodificada.email
+          }
+        })
+        if (!datos) {
+          res.status(500).json({msg: 'Ha ocurrido un problema al decodificar el token'})
+        } else {
+          User.findByPk(datos.dataValues.id, { include: "roles"}).then(user => {
+            //Guardo los datos del usuario para la sesion          req.user = {id: user.id, name: user.name, email: user.email, phone: user.phone, CUIT: user.CUIT, localidad: user.localidad, provincia: user.provincia, roles: user.roles},
+            req.user = {id: user.id, name: user.name, email: user.email, phone: user.phone, CUIT: user.CUIT, localidad: user.localidad, provincia: user.provincia, roles: user.roles},
+            next();
+          })
+        }
+      } catch (err) {
+        res.status(500).json(err.message)
+      }
+    }else{
+      res.status(401).json({msg: "Debe iniciar sesión para continuar"})
+    }
+  };
+
 module.exports = {
     index,
     show,
@@ -118,5 +147,6 @@ module.exports = {
     login,
     destroy,
     logOut,
-    policy
+    policy,
+    isAuthenticated
 };
