@@ -1,64 +1,64 @@
 const express = require('express')
 const router = express.Router()
-const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/vinos.controller');
+const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/factura.controller');
 const { isAuthenticated } = require('../controllers/index.controller');
-const { validatevinos } = require('../validators/vinos');
+const { validateFactura } = require('../validators/Factura');
 
 /**
  * @openapi
  * path:
- * /wine/find/all:
+ * /Facturas/find/all:
  *  get:
- *    description: Trae todas las vinos
- *    summary: Trae todas las vinos
+ *    description: Trae todas las Facturas
+ *    summary: Trae todas las Facturas
  *    tags:
- *      - wine
+ *      - Facturas
  *    responses:
  *        200:
  *         description: Regresa el token en el header.
  *        400:
- *          description: No hay vinos.
+ *          description: No hay Facturas.
  */
 router.get('/find/all', findAll);
 
 /**
  * @openapi
  * path:
- * /wine/find/{id}:
+ * /Facturas/find/{id}:
  *  get:
- *    description: Trae una vino especifica por ID
- *    summary: Trae una vino especifica por ID
+ *    description: Trae una Factura especifica por ID
+ *    summary: Trae una Factura especifica por ID
  *    tags:
- *      - wine
+ *      - Facturas
  *    responses:
  *        200:
  *         description: Regresa el token en el header.
  *        400:
- *          description: No se encontro ninguna vino.
+ *          description: No se encontro ninguna Factura.
  *    parameters:
  *        - in: path
  *          name: id
  *          required: true
  *          schema:
  *              type: int(11)
- *          description: ID de la vino
+ *          description: ID de la Factura
  */
 router.get('/find/:id', isExist, find);
 
 /**
  * @openapi
  * path:
- * /wine:
+ * /Facturas:
  *   post:
- *      description: Crea una vino
- *      summary: Crea una vino
+ *      description: Crea una Factura
+ *      summary: Crea una Factura
  *      tags:
- *        - wine
+ *        - Facturas
  *      responses:
  *        200:
  *          description: Regresa el token en el header
  *        400:
- *          description: Ha ocurrido un error al crear la vino
+ *          description: Ha ocurrido un error al crear la Factura
  *        401:
  *          description: El usuario no tiene los permisos necesarios
  *      requestBody:
@@ -77,22 +77,22 @@ router.get('/find/:id', isExist, find);
  *                  format: int(11)
  *                  example: 1
  */
-router.post('/', isAuthenticated, validatevinos, store);
+router.post('/', isAuthenticated, validateFactura, store);
 
 /**
  * @openapi
  * path:
- * /wine/{id}:
+ * /Facturas/{id}:
  *   put:
- *      description: Actualiza una vino por el id
- *      summary: Actualiza una vino por el id
+ *      description: Actualiza una Factura por el id
+ *      summary: Actualiza una Factura por el id
  *      tags:
- *        - wine
+ *        - Facturas
  *      responses:
  *        201:
  *          description: Regresa el token en el header
  *        400:
- *          description: Ha ocurrido un error al actualizar la vino
+ *          description: Ha ocurrido un error al actualizar la Factura
  *        401:
  *          description: El usuario no tiene los permisos necesarios
  *      parameters:
@@ -101,7 +101,7 @@ router.post('/', isAuthenticated, validatevinos, store);
  *          required: true
  *          schema:
  *              type: int
- *          description: ID de la vino
+ *          description: ID de la Factura
  *      requestBody:
  *        required: true
  *        content:
@@ -118,17 +118,17 @@ router.post('/', isAuthenticated, validatevinos, store);
  *                  format: int(100)
  *                  example: 1
  */
-router.put('/:id', isAuthenticated, isExist, validatevinos, policy, update);
+router.put('/:id', isAuthenticated, isExist, validateFactura, policy, update);
 
 /** 
  * @openapi
  * path:
- * /wine/{id}:
+ * /Facturas/{id}:
  *   delete:
- *     description: Elimina una vino
- *     summary: Elimina una vino
+ *     description: Elimina una Factura
+ *     summary: Elimina una Factura
  *     tags:
- *       - wine
+ *       - Facturas
  *     responses:
  *       200:
  *         description: Regresa el token en el header
@@ -140,7 +140,7 @@ router.put('/:id', isAuthenticated, isExist, validatevinos, policy, update);
  *          required: true
  *          schema:
  *              type: int(11)
- *          description: ID de la vino a eliminar
+ *          description: ID de la Factura a eliminar
  */
 router.delete('/:id', isAuthenticated, isExist, policy, destroy);
 

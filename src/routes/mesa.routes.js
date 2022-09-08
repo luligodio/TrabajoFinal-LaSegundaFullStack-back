@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/mesas.controller');
+const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/mesa.controller');
 const { isAuthenticated } = require('../controllers/index.controller');
-const { validatemesas } = require('../validators/mesas');
+const { validateMesa } = require('../validators/Mesa');
 
 /**
  * @openapi
@@ -77,7 +77,7 @@ router.get('/find/:id', isExist, find);
  *                  format: int(11)
  *                  example: 1
  */
-router.post('/', isAuthenticated, validatemesas, store);
+router.post('/', isAuthenticated, validateMesa, store);
 
 /**
  * @openapi
@@ -118,7 +118,7 @@ router.post('/', isAuthenticated, validatemesas, store);
  *                  format: int(100)
  *                  example: 1
  */
-router.put('/:id', isAuthenticated, isExist, validatemesas, policy, update);
+router.put('/:id', isAuthenticated, isExist, validateMesa, policy, update);
 
 /** 
  * @openapi

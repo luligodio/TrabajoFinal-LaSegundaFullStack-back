@@ -1,64 +1,64 @@
 const express = require('express')
 const router = express.Router()
-const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/hamburguesa.controller');
+const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/producto.controller');
 const { isAuthenticated } = require('../controllers/index.controller');
-const { validatehamburguesas } = require('../validators/hamburguesas');
+const { validateProducto } = require('../validators/Producto');
 
 /**
  * @openapi
  * path:
- * /burger/find/all:
+ * /productos/find/all:
  *  get:
- *    description: Trae todas las Hamburguesas
- *    summary: Trae todas las Hamburguesas
+ *    description: Trae todas las Productos
+ *    summary: Trae todas las Productos
  *    tags:
- *      - burger
+ *      - productos
  *    responses:
  *        200:
  *         description: Regresa el token en el header.
  *        400:
- *          description: No hay Hamburguesas.
+ *          description: No hay Productos.
  */
 router.get('/find/all', findAll);
 
 /**
  * @openapi
  * path:
- * /burger/find/{id}:
+ * /productos/find/{id}:
  *  get:
- *    description: Trae una Hamburguesa especifica por ID
- *    summary: Trae una Hamburguesa especifica por ID
+ *    description: Trae un Producto especifica por ID
+ *    summary: Trae un Producto especifica por ID
  *    tags:
- *      - burger
+ *      - productos
  *    responses:
  *        200:
  *         description: Regresa el token en el header.
  *        400:
- *          description: No se encontro ninguna Hamburguesa.
+ *          description: No se encontro ningun Producto.
  *    parameters:
  *        - in: path
  *          name: id
  *          required: true
  *          schema:
  *              type: int(11)
- *          description: ID de la Hamburguesa
+ *          description: ID de la Producto
  */
 router.get('/find/:id', isExist, find);
 
 /**
  * @openapi
  * path:
- * /burger:
+ * /productos:
  *   post:
- *      description: Crea una Hamburguesa
- *      summary: Crea una Hamburguesa
+ *      description: Crea un Producto
+ *      summary: Crea un Producto
  *      tags:
- *        - burger
+ *        - productos
  *      responses:
  *        200:
  *          description: Regresa el token en el header
  *        400:
- *          description: Ha ocurrido un error al crear la Hamburguesa
+ *          description: Ha ocurrido un error al crear la Producto
  *        401:
  *          description: El usuario no tiene los permisos necesarios
  *      requestBody:
@@ -77,22 +77,22 @@ router.get('/find/:id', isExist, find);
  *                  format: int(11)
  *                  example: 1
  */
-router.post('/', isAuthenticated, validatehamburguesas, store);
+router.post('/', isAuthenticated, validateProducto, store);
 
 /**
  * @openapi
  * path:
- * /burger/{id}:
+ * /productos/{id}:
  *   put:
- *      description: Actualiza una Hamburguesa por el id
- *      summary: Actualiza una Hamburguesa por el id
+ *      description: Actualiza un Producto por el id
+ *      summary: Actualiza un Producto por el id
  *      tags:
- *        - burger
+ *        - productos
  *      responses:
  *        201:
  *          description: Regresa el token en el header
  *        400:
- *          description: Ha ocurrido un error al actualizar la Hamburguesa
+ *          description: Ha ocurrido un error al actualizar la Producto
  *        401:
  *          description: El usuario no tiene los permisos necesarios
  *      parameters:
@@ -101,7 +101,7 @@ router.post('/', isAuthenticated, validatehamburguesas, store);
  *          required: true
  *          schema:
  *              type: int
- *          description: ID de la Hamburguesa
+ *          description: ID de la Producto
  *      requestBody:
  *        required: true
  *        content:
@@ -118,17 +118,17 @@ router.post('/', isAuthenticated, validatehamburguesas, store);
  *                  format: int(100)
  *                  example: 1
  */
-router.put('/:id', isAuthenticated, isExist, validatehamburguesas, policy, update);
+router.put('/:id', isAuthenticated, isExist, validateProducto, policy, update);
 
 /** 
  * @openapi
  * path:
- * /burger/{id}:
+ * /productos/{id}:
  *   delete:
- *     description: Elimina una Hamburguesa
- *     summary: Elimina una Hamburguesa
+ *     description: Elimina un Producto
+ *     summary: Elimina un Producto
  *     tags:
- *       - burger
+ *       - productos
  *     responses:
  *       200:
  *         description: Regresa el token en el header
@@ -140,7 +140,7 @@ router.put('/:id', isAuthenticated, isExist, validatehamburguesas, policy, updat
  *          required: true
  *          schema:
  *              type: int(11)
- *          description: ID de la Hamburguesa a eliminar
+ *          description: ID de la Producto a eliminar
  */
 router.delete('/:id', isAuthenticated, isExist, policy, destroy);
 

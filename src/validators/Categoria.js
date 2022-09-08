@@ -1,7 +1,7 @@
 const { check } = require('express-validator');
 const { validateResult } = require('../helpers/validateHelper');
 
-const validatebebidas_sin = [
+const validateCategoria = [
 
     check('name')
     .exists()
@@ -13,4 +13,4 @@ const validatebebidas_sin = [
     }
 ]
 
-module.exports = { validatebebidas_sin }
+module.exports = { validateCategoria }

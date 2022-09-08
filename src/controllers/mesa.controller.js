@@ -1,5 +1,5 @@
 const moment = require('moment');
-const { mesa, User } = require('../database/models/index')
+const { Mesa, User } = require('../database/models/index')
 const sequelize = require('sequelize');
 
 //API

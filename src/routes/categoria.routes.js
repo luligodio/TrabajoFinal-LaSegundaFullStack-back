@@ -1,64 +1,64 @@
 const express = require('express')
 const router = express.Router()
-const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/pizzas.controller');
+const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/categories.controller');
 const { isAuthenticated } = require('../controllers/index.controller');
-const { validatepizzas } = require('../validators/pizzas');
+const { validateCategoria } = require('../validators/categories');
 
 /**
  * @openapi
  * path:
- * /pizza/find/all:
+ * /categories/find/all:
  *  get:
- *    description: Trae todas las pizzas
- *    summary: Trae todas las pizzas
+ *    description: Trae todas las categorias
+ *    summary: Trae todas las categorias
  *    tags:
- *      - pizza
+ *      - categories
  *    responses:
  *        200:
  *         description: Regresa el token en el header.
  *        400:
- *          description: No hay pizzas.
+ *          description: No hay categorias.
  */
 router.get('/find/all', findAll);
 
 /**
  * @openapi
  * path:
- * /pizza/find/{id}:
+ * /categories/find/{id}:
  *  get:
- *    description: Trae una pizza especifica por ID
- *    summary: Trae una pizza especifica por ID
+ *    description: Trae una categoria especifica por ID
+ *    summary: Trae una categoria especifica por ID
  *    tags:
- *      - pizza
+ *      - categories
  *    responses:
  *        200:
  *         description: Regresa el token en el header.
  *        400:
- *          description: No se encontro ninguna pizza.
+ *          description: No se encontro ninguna categoria.
  *    parameters:
  *        - in: path
  *          name: id
  *          required: true
  *          schema:
  *              type: int(11)
- *          description: ID de la pizza
+ *          description: ID de la categoria
  */
 router.get('/find/:id', isExist, find);
 
 /**
  * @openapi
  * path:
- * /pizza:
+ * /categories:
  *   post:
- *      description: Crea una pizza
- *      summary: Crea una pizza
+ *      description: Crea una categoria
+ *      summary: Crea una categoria
  *      tags:
- *        - pizza
+ *        - categories
  *      responses:
  *        200:
  *          description: Regresa el token en el header
  *        400:
- *          description: Ha ocurrido un error al crear la pizza
+ *          description: Ha ocurrido un error al crear la categoria
  *        401:
  *          description: El usuario no tiene los permisos necesarios
  *      requestBody:
@@ -77,22 +77,22 @@ router.get('/find/:id', isExist, find);
  *                  format: int(11)
  *                  example: 1
  */
-router.post('/', isAuthenticated, validatepizzas, store);
+router.post('/', isAuthenticated, validateCategoria, store);
 
 /**
  * @openapi
  * path:
- * /pizza/{id}:
+ * /categories/{id}:
  *   put:
- *      description: Actualiza una pizza por el id
- *      summary: Actualiza una pizza por el id
+ *      description: Actualiza una categoria por el id
+ *      summary: Actualiza una categoria por el id
  *      tags:
- *        - pizza
+ *        - categories
  *      responses:
  *        201:
  *          description: Regresa el token en el header
  *        400:
- *          description: Ha ocurrido un error al actualizar la pizza
+ *          description: Ha ocurrido un error al actualizar la categoria
  *        401:
  *          description: El usuario no tiene los permisos necesarios
  *      parameters:
@@ -101,7 +101,7 @@ router.post('/', isAuthenticated, validatepizzas, store);
  *          required: true
  *          schema:
  *              type: int
- *          description: ID de la pizza
+ *          description: ID de la categoria
  *      requestBody:
  *        required: true
  *        content:
@@ -118,17 +118,17 @@ router.post('/', isAuthenticated, validatepizzas, store);
  *                  format: int(100)
  *                  example: 1
  */
-router.put('/:id', isAuthenticated, isExist, validatepizzas, policy, update);
+router.put('/:id', isAuthenticated, isExist, validateCategoria, policy, update);
 
 /** 
  * @openapi
  * path:
- * /pizza/{id}:
+ * /categories/{id}:
  *   delete:
- *     description: Elimina una pizza
- *     summary: Elimina una pizza
+ *     description: Elimina una categoria
+ *     summary: Elimina una categoria
  *     tags:
- *       - pizza
+ *       - categories
  *     responses:
  *       200:
  *         description: Regresa el token en el header
@@ -140,7 +140,7 @@ router.put('/:id', isAuthenticated, isExist, validatepizzas, policy, update);
  *          required: true
  *          schema:
  *              type: int(11)
- *          description: ID de la pizza a eliminar
+ *          description: ID de la categoria a eliminar
  */
 router.delete('/:id', isAuthenticated, isExist, policy, destroy);
 
