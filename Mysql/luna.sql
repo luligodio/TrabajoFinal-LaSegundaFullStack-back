@@ -14,13 +14,13 @@ CREATE TABLE Usuario
     nombre VARCHAR(100) NOT NULL,
     contraseña VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    rol VARCHAR(20) NOT NULL
+    role VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE Header
 (
     id_header INTEGER NOT NULL PRIMARY KEY,
-    id_users INTEGER NOT NULL,
+    id_user INTEGER NOT NULL,
     fecha VARCHAR(100) NOT NULL,
     ubicacion VARCHAR(100) NOT NULL,
     id_mesa INTEGER NOT NULL,
