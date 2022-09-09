@@ -4,9 +4,10 @@ const sequelize = require('sequelize');
 
 //API
 
+
 const findAll = async(req, res) => {
     let Productos = await Producto.findAll({ order: sequelize.literal('id ASC') });
-    return res.json(Productos)
+    return res.json(Productos);
 };
 
 const find = async(req, res) => {

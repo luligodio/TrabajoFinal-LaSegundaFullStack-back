@@ -19,7 +19,7 @@ const { validateProducto } = require('../validators/Producto');
  *        400:
  *          description: No hay Productos.
  */
-router.get('/find/all', findAll);
+router.get('', findAll);
 
 /**
  * @openapi
@@ -43,7 +43,7 @@ router.get('/find/all', findAll);
  *              type: int(11)
  *          description: ID de la Producto
  */
-router.get('/find/:id', isExist, find);
+router.get('/:id', isExist, find);
 
 /**
  * @openapi

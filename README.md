@@ -5,13 +5,17 @@ Paso 1-instalar package.json
 
 npm i
 
-Paso 2 - creacion de base de datos
+Paso 2 - Creacion de base de datos
 
 npx sequelize db:create
 
-Paso 3 -Correr Programa
+Paso 3 - Correr Programa
 
 npm run dev
+
+Pasp 4 - 
+
+npx sequelize db:seed:all
 
 Script de migrations and models
 npx sequelize model: create--name mesa  --attributes name:string,ingredientes:string,ubicacion:string
