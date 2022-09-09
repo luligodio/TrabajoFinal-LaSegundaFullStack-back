@@ -2,63 +2,63 @@ const express = require('express')
 const router = express.Router()
 const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/header.controller');
 const { isAuthenticated } = require('../controllers/index.controller');
-const { validateCategories } = require('../validators/Header');
+const { validateHeader } = require('../validators/Header');
 
 /**
  * @openapi
  * path:
- * /categories/find/all:
+ * /headers/find/all:
  *  get:
- *    description: Trae todas las categorias
- *    summary: Trae todas las categorias
+ *    description: Trae todos los Headers
+ *    summary: Trae todos los Headers
  *    tags:
- *      - categories
+ *      - headers
  *    responses:
  *        200:
  *         description: Regresa el token en el header.
  *        400:
- *          description: No hay categorias.
+ *          description: No hay Headers.
  */
 router.get('/find/all', findAll);
 
 /**
  * @openapi
  * path:
- * /categories/find/{id}:
+ * /headers/find/{id}:
  *  get:
- *    description: Trae una categoria especifica por ID
- *    summary: Trae una categoria especifica por ID
+ *    description: Trae un header especifica por ID
+ *    summary: Trae un header especifica por ID
  *    tags:
- *      - categories
+ *      - headers
  *    responses:
  *        200:
  *         description: Regresa el token en el header.
  *        400:
- *          description: No se encontro ninguna categoria.
+ *          description: No se encontro ningun header.
  *    parameters:
  *        - in: path
  *          name: id
  *          required: true
  *          schema:
  *              type: int(11)
- *          description: ID de la categoria
+ *          description: ID de la header
  */
 router.get('/find/:id', isExist, find);
 
 /**
  * @openapi
  * path:
- * /categories:
+ * /headers:
  *   post:
- *      description: Crea una categoria
- *      summary: Crea una categoria
+ *      description: Crea un header
+ *      summary: Crea un header
  *      tags:
- *        - categories
+ *        - headers
  *      responses:
  *        200:
  *          description: Regresa el token en el header
  *        400:
- *          description: Ha ocurrido un error al crear la categoria
+ *          description: Ha ocurrido un error al crear la header
  *        401:
  *          description: El usuario no tiene los permisos necesarios
  *      requestBody:
@@ -77,22 +77,22 @@ router.get('/find/:id', isExist, find);
  *                  format: int(11)
  *                  example: 1
  */
-router.post('/', isAuthenticated, validateCategories, store);
+router.post('/', isAuthenticated, validateHeader, store);
 
 /**
  * @openapi
  * path:
- * /categories/{id}:
+ * /headers/{id}:
  *   put:
- *      description: Actualiza una categoria por el id
- *      summary: Actualiza una categoria por el id
+ *      description: Actualiza un header por el id
+ *      summary: Actualiza un header por el id
  *      tags:
- *        - categories
+ *        - headers
  *      responses:
  *        201:
  *          description: Regresa el token en el header
  *        400:
- *          description: Ha ocurrido un error al actualizar la categoria
+ *          description: Ha ocurrido un error al actualizar la header
  *        401:
  *          description: El usuario no tiene los permisos necesarios
  *      parameters:
@@ -101,7 +101,7 @@ router.post('/', isAuthenticated, validateCategories, store);
  *          required: true
  *          schema:
  *              type: int
- *          description: ID de la categoria
+ *          description: ID de la header
  *      requestBody:
  *        required: true
  *        content:
@@ -118,17 +118,17 @@ router.post('/', isAuthenticated, validateCategories, store);
  *                  format: int(100)
  *                  example: 1
  */
-router.put('/:id', isAuthenticated, isExist, validateCategories, policy, update);
+router.put('/:id', isAuthenticated, isExist, validateHeader, policy, update);
 
 /** 
  * @openapi
  * path:
- * /categories/{id}:
+ * /headers/{id}:
  *   delete:
- *     description: Elimina una categoria
- *     summary: Elimina una categoria
+ *     description: Elimina un header
+ *     summary: Elimina un header
  *     tags:
- *       - categories
+ *       - headers
  *     responses:
  *       200:
  *         description: Regresa el token en el header
@@ -140,7 +140,7 @@ router.put('/:id', isAuthenticated, isExist, validateCategories, policy, update)
  *          required: true
  *          schema:
  *              type: int(11)
- *          description: ID de la categoria a eliminar
+ *          description: ID de la header a eliminar
  */
 router.delete('/:id', isAuthenticated, isExist, policy, destroy);
 

@@ -10,7 +10,6 @@ module.exports = (sequelize, DataTypes) => {
     }
     Categoria.init({
         name: DataTypes.STRING,
-        descripcion: DataTypes.STRING
     }, {
         sequelize,
         modelName: 'Categoria',

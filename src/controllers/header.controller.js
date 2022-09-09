@@ -15,7 +15,7 @@ const find = async(req, res) => {
     if (Headers) {
         return res.status(200).json(Headers)
     } else {
-        return res.status(404).json({ status: 404, msg: "Encabezado no encontrada" })
+        return res.status(404).json({ status: 404, msg: "Header no encontrada" })
     }
 };
 
@@ -25,7 +25,7 @@ const store = async(req, res) => {
     if (Headers) {
         return res.status(200).json({ status: 200, Headers })
     } else {
-        return res.status(500).json({ status: 500, msg: "No se pudo crear la Encabezado" })
+        return res.status(500).json({ status: 500, msg: "No se pudo crear la Header" })
     }
 
 };
@@ -36,7 +36,7 @@ const update = async(req, res) => {
     let Headers = await Header.findByPk(req.params.id);
 
     if (!Headers) {
-        return res.status(404).json({ status: 404, msg: "Encabezado no encontrada" })
+        return res.status(404).json({ status: 404, msg: "Header no encontrada" })
     } else {
         Headers.title = params.title
         Headers.save().then(Headers => {
@@ -49,7 +49,7 @@ const destroy = async(req, res) => {
     let Headers = await Header.findByPk(req.params.id);
 
     if (!Headers) {
-        return res.status(404).json({ msg: "Encabezado no encontrada" })
+        return res.status(404).json({ msg: "Header no encontrada" })
     } else {
         Headers.destroy().then(Headers => {
             res.status(200).json({ status: 200, Headers })
@@ -75,7 +75,7 @@ const isExist = async(req, res, next) => {
         req.Headers = Headers.dataValues
         return next()
     } else {
-        return res.status(404).json({ status: 404, msg: "Encabezado no encontrada" })
+        return res.status(404).json({ status: 404, msg: "Header no encontrada" })
     }
 };
 

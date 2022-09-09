@@ -11,13 +11,13 @@ module.exports = {
             name: {
                 type: Sequelize.STRING
             },
+            ingredientes: {
+                type: Sequelize.STRING
+            },
             precio: {
                 type: Sequelize.INTEGER
             },
             stock: {
-                type: Sequelize.STRING
-            },
-            fecha: {
                 type: Sequelize.STRING
             },
             id_categoria: {

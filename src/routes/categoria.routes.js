@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/categories.controller');
 const { isAuthenticated } = require('../controllers/index.controller');
-const { validateCategoria } = require('../validators/categories');
+const { validateCategoria } = require('../validators/categoria');
 
 /**
  * @openapi

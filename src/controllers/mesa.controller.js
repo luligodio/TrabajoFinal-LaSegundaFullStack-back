@@ -5,12 +5,12 @@ const sequelize = require('sequelize');
 //API
 
 const findAll = async(req, res) => {
-    let table = await mesa.findAll({ order: sequelize.literal('id ASC') });
+    let table = await Mesa.findAll({ order: sequelize.literal('id ASC') });
     return res.json(table)
 };
 
 const find = async(req, res) => {
-    let table = await mesa.findByPk(req.params.id);
+    let table = await Mesa.findByPk(req.params.id);
 
     if (table) {
         return res.status(200).json(table)
@@ -21,7 +21,7 @@ const find = async(req, res) => {
 
 const store = async(req, res) => {
     const params = req.body
-    let table = await mesa.create(params)
+    let table = await Mesa.create(params)
     if (table) {
         return res.status(200).json({ status: 200, table })
     } else {
@@ -33,7 +33,7 @@ const store = async(req, res) => {
 const update = async(req, res) => {
     const params = req.body
 
-    let table = await mesa.findByPk(req.params.id);
+    let table = await Mesa.findByPk(req.params.id);
 
     if (!table) {
         return res.status(404).json({ status: 404, msg: "Mesa no encontrada" })
@@ -46,7 +46,7 @@ const update = async(req, res) => {
 };
 
 const destroy = async(req, res) => {
-    let table = await mesa.findByPk(req.params.id);
+    let table = await Mesa.findByPk(req.params.id);
 
     if (!table) {
         return res.status(404).json({ msg: "Mesa no encontrada" })
@@ -69,7 +69,7 @@ const policy = async(req, res, next) => {
 //Middleware
 
 const isExist = async(req, res, next) => {
-    let table = await mesa.findByPk(req.params.id);
+    let table = await Mesa.findByPk(req.params.id);
 
     if (table) {
         req.table = table.dataValues

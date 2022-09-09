@@ -7,12 +7,12 @@ const { validateMesa } = require('../validators/Mesa');
 /**
  * @openapi
  * path:
- * /table/find/all:
+ * /Mesa/find/all:
  *  get:
  *    description: Trae todas las mesas
  *    summary: Trae todas las mesas
  *    tags:
- *      - table
+ *      - Mesa
  *    responses:
  *        200:
  *         description: Regresa el token en el header.
@@ -24,12 +24,12 @@ router.get('/find/all', findAll);
 /**
  * @openapi
  * path:
- * /table/find/{id}:
+ * /Mesa/find/{id}:
  *  get:
  *    description: Trae una mesa especifica por ID
  *    summary: Trae una mesa especifica por ID
  *    tags:
- *      - table
+ *      - Mesa
  *    responses:
  *        200:
  *         description: Regresa el token en el header.
@@ -48,12 +48,12 @@ router.get('/find/:id', isExist, find);
 /**
  * @openapi
  * path:
- * /table:
+ * /Mesa:
  *   post:
  *      description: Crea una mesa
  *      summary: Crea una mesa
  *      tags:
- *        - table
+ *        - Mesa
  *      responses:
  *        200:
  *          description: Regresa el token en el header
@@ -82,12 +82,12 @@ router.post('/', isAuthenticated, validateMesa, store);
 /**
  * @openapi
  * path:
- * /table/{id}:
+ * /Mesa/{id}:
  *   put:
  *      description: Actualiza una mesa por el id
  *      summary: Actualiza una mesa por el id
  *      tags:
- *        - table
+ *        - Mesa
  *      responses:
  *        201:
  *          description: Regresa el token en el header
@@ -123,12 +123,12 @@ router.put('/:id', isAuthenticated, isExist, validateMesa, policy, update);
 /** 
  * @openapi
  * path:
- * /table/{id}:
+ * /Mesa/{id}:
  *   delete:
  *     description: Elimina una mesa
  *     summary: Elimina una mesa
  *     tags:
- *       - table
+ *       - Mesa
  *     responses:
  *       200:
  *         description: Regresa el token en el header
