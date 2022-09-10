@@ -35,12 +35,14 @@ const findAll = async(req, res) => {
         offset: page * size,
     })
 
-    return res.status(200).json({
-        'status': 200,
-        content: users.rows,
-        totalPages: Math.ceil(users.count / size),
-        page,
-    })
+    // return res.status(200).json({
+    //     'status': 200,
+    //     content: users.rows,
+    //     totalPages: Math.ceil(users.count / size),
+    //     page,
+    // })
+    // let Usuarios = await user.findAll({ order: sequelize.literal('id ASC') });
+    return res.json(users.rows);
 };
 
 const register = async(req, res) => {
