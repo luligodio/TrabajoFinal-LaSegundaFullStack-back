@@ -3,22 +3,31 @@
 module.exports = {
     async up(queryInterface, Sequelize) {
         await Promise.all([
-            queryInterface.bulkInsert('productos', [{
-                name: 'Contenido general',
-                precio: 1,
-                stock: 150,
-                createdAt: new Date(),
-                updatedAt: new Date()
-            }
+            queryInterface.bulkInsert('Users', [{
+                    name: 'nahuel',
+                    password: 170195,
+                    email: 'nah@dis.com',
+                    role: '3',
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                },
+                {
+                    name: 'luciana',
+                    password: 110922,
+                    email: 'luc@dis.com',
+                    role: '3',
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                }
 
-            ],),
+            ], ),
         ]);
     },
 
     async down(queryInterface, Sequelize) {
         await Promise.all([
-            queryInterface.bulkDelete('user', null, {}),
-            ]);
+            queryInterface.bulkDelete('Users', null, {}),
+        ]);
     }
 
 };
