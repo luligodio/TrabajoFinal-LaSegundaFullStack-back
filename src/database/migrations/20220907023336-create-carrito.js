@@ -1,15 +1,12 @@
 'use strict';
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.createTable('headers', {
+        await queryInterface.createTable('Carrito', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
-            },
-            name: {
-                type: Sequelize.STRING
             },
             id_user: {
                 type: Sequelize.INTEGER,
@@ -19,9 +16,6 @@ module.exports = {
                 },
                 onDelete: 'CASCADE',
                 onupdate: 'CASCADE'
-            },
-            ubicacion: {
-                type: Sequelize.STRING
             },
             fecha: {
                 type: Sequelize.STRING
@@ -35,6 +29,21 @@ module.exports = {
                 onDelete: 'CASCADE',
                 onupdate: 'CASCADE'
             },
+            id_producto: {
+                type: Sequelize.INTEGER,
+                references: {
+                    model: 'Producto',
+                    key: 'id'
+                },
+                onDelete: 'CASCADE',
+                onupdate: 'CASCADE'
+            },
+            cantidad: {
+                type: Sequelize.STRING
+            },
+            precio: {
+                type: Sequelize.INTEGER
+            },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE
@@ -46,6 +55,6 @@ module.exports = {
         });
     },
     async down(queryInterface, Sequelize) {
-        await queryInterface.dropTable('headers');
+        await queryInterface.dropTable('Carrito');
     }
 };

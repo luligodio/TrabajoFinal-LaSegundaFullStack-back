@@ -3,7 +3,7 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class User extends Model {
         static associate(models) {
-            User.hasMany(models.Header, { foreignKey: 'id_user' })
+            User.hasMany(models.Carrito, { foreignKey: 'id_user' })
         }
     }
     User.init({
@@ -36,11 +36,7 @@ module.exports = (sequelize, DataTypes) => {
                 }
             }
         },
-        role: {
-            type: DataTypes.STRING(20),
-            allowNull: false,
-            defaultValue: "user"
-        },
+        role: DataTypes.INTEGER,
         resetToken: {
             type: DataTypes.STRING(1020),
             allowNull: true

@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
     class Mesa extends Model {
         static associate(models) {
-            Mesa.hasMany(models.Header, { foreignKey: 'id_mesa' })
+            Mesa.hasMany(models.Carrito, { foreignKey: 'id_mesa' })
         }
     }
     Mesa.init({
