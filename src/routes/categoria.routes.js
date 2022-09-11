@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/categories.controller');
+const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/categoria.controller');
 const { isAuthenticated } = require('../controllers/index.controller');
 const { validateCategoria } = require('../validators/categoria');
 
@@ -19,7 +19,7 @@ const { validateCategoria } = require('../validators/categoria');
  *        400:
  *          description: No hay categorias.
  */
-router.get('/find/all', findAll);
+router.get('', findAll);
 
 /**
  * @openapi
@@ -43,7 +43,7 @@ router.get('/find/all', findAll);
  *              type: int(11)
  *          description: ID de la categoria
  */
-router.get('/find/:id', isExist, find);
+router.get('/:id', isExist, find);
 
 /**
  * @openapi
