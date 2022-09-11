@@ -1,42 +1,86 @@
 const { check } = require('express-validator');
 const { validateResult } = require('../helpers/validateHelper');
 
-const validateLogin = [
+// const validateLogin = [
     
+//     check('email')
+//         .exists()
+//         .isLength({min:5})
+//         .withMessage('El correo debe contener mas de 5 caracteres')
+//         .isEmail()
+//         .withMessage('No contiene un formato de email valido'),
+//     check('password')
+//         .exists()
+//         .isLength({min:6})
+//         .withMessage('La contraseña debe contener mas de 6 caracteres'),
+//     (req, res, next) => {
+//         validateResult(req, res, next)
+//     }
+// ]
+const validateLogin = [
+
+    check('email').trim()
+    .notEmpty().withMessage('El email es requerido')
+    .isEmail().withMessage('El email no es valido'),
+
+    check('password').trim()
+    .notEmpty().withMessage('La contraseña es requerida')
+    .isLength({
+        min: 6
+    }).withMessage('La contraseña debe tener al menos 6 caracteres'),
+
+    (req, res, next) => {
+        validateResult(req, res, next)
+    }
+]
+const validateRegister = [
+    check('name').trim()
+    .exists()
+    .isLength({
+        min: 2
+    })
+    .withMessage('El nombre debe contener como minimo 2 caracteres'),
     check('email')
-        .exists()
-        .isLength({min:5})
-        .withMessage('El correo debe contener mas de 5 caracteres')
-        .isEmail()
-        .withMessage('No contiene un formato de email valido'),
+    .exists()
+    .isLength({
+        min: 5
+    })
+    .withMessage('El correo debe contener mas de 5 caracteres')
+    .isEmail()
+    .withMessage('No contiene un formato de email valido'),
     check('password')
-        .exists()
-        .isLength({min:6})
-        .withMessage('La contraseña debe contener mas de 6 caracteres'),
+    .exists()
+    .isLength({
+        min: 6
+    })
+    .withMessage('La contraseña debe contener mas de 6 caracteres'),
     (req, res, next) => {
         validateResult(req, res, next)
     }
 ]
 
-const validateRegister = [
+
+
+
+// const validateRegister = [
     
-    check('email')
-        .exists()
-        .isLength({min:5})
-        .withMessage('El correo debe contener mas de 5 caracteres')
-        .isEmail()
-        .withMessage('No contiene un formato de email valido'),
-    check('password')
-        .exists()
-        .isLength({min:6})
-        .withMessage('La contraseña debe contener mas de 6 caracteres'),
-    check('confirmPassword')
-        .exists()
-        .isLength({min:6})
-        .withMessage('La contraseña debe contener mas de 6 caracteres'),
-    (req, res, next) => {
-        validateResult(req, res, next)
-    }
-]
+//     check('email')
+//         .exists()
+//         .isLength({min:5})
+//         .withMessage('El correo debe contener mas de 5 caracteres')
+//         .isEmail()
+//         .withMessage('No contiene un formato de email valido'),
+//     check('password')
+//         .exists()
+//         .isLength({min:6})
+//         .withMessage('La contraseña debe contener mas de 6 caracteres'),
+//     check('confirmPassword')
+//         .exists()
+//         .isLength({min:6})
+//         .withMessage('La contraseña debe contener mas de 6 caracteres'),
+//     (req, res, next) => {
+//         validateResult(req, res, next)
+//     }
+// ]
 
 module.exports = { validateLogin, validateRegister }

@@ -23,8 +23,8 @@ app.use(json());
 
 //Rutas
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(setup));
-app.use('/mesa', router);
-app.use('/', router);
+app.use('/auth', router);
+// app.use('/mesa', router);
 app.use('/productos', routerP);
 
 app.use((req, res, next) => {
