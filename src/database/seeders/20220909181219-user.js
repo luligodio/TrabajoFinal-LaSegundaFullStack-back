@@ -3,9 +3,9 @@
 module.exports = {
     async up(queryInterface, Sequelize) {
         await Promise.all([
-            queryInterface.bulkInsert('Users', [{
+            queryInterface.bulkInsert('users', [{
                     name: 'nahuel',
-                    password: 170195,
+                    password: '170195',
                     email: 'nah@dis.com',
                     role: '3',
                     createdAt: new Date(),
@@ -13,7 +13,7 @@ module.exports = {
                 },
                 {
                     name: 'luciana',
-                    password: 110922,
+                    password: '110922',
                     email: 'luc@dis.com',
                     role: '3',
                     createdAt: new Date(),
