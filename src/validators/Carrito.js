@@ -1,7 +1,7 @@
 const { check } = require('express-validator');
 const { validateResult } = require('../helpers/validateHelper');
 
-const validateFactura = [
+const validateCarrito = [
 
     check('name')
     .exists()
@@ -13,4 +13,4 @@ const validateFactura = [
     }
 ]
 
-module.exports = { validateFactura }
+module.exports = { validateCarrito }

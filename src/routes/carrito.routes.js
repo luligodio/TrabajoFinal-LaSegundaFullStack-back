@@ -1,64 +1,64 @@
 const express = require('express')
 const router = express.Router()
-const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/factura.controller');
+const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/carrito.controller');
 const { isAuthenticated } = require('../controllers/index.controller');
-const { validateFactura } = require('../validators/Factura');
+const { validateCarrito } = require('../validators/Carrito');
 
 /**
  * @openapi
  * path:
- * /Facturas/find/all:
+ * /Carritos/find/all:
  *  get:
- *    description: Trae todas las Facturas
- *    summary: Trae todas las Facturas
+ *    description: Trae todos los Carritos
+ *    summary: Trae todos los Carritos
  *    tags:
- *      - Facturas
+ *      - Carritos
  *    responses:
  *        200:
- *         description: Regresa el token en el header.
+ *         description: Regresa el token en el compra.
  *        400:
- *          description: No hay Facturas.
+ *          description: No hay Carritos.
  */
-router.get('/find/all', findAll);
+router.get('', findAll);
 
 /**
  * @openapi
  * path:
- * /Facturas/find/{id}:
+ * /Carritos/find/{id}:
  *  get:
- *    description: Trae una Factura especifica por ID
- *    summary: Trae una Factura especifica por ID
+ *    description: Trae un compra especifica por ID
+ *    summary: Trae un compra especifica por ID
  *    tags:
- *      - Facturas
+ *      - Carritos
  *    responses:
  *        200:
- *         description: Regresa el token en el header.
+ *         description: Regresa el token en el compra.
  *        400:
- *          description: No se encontro ninguna Factura.
+ *          description: No se encontro ningun compra.
  *    parameters:
  *        - in: path
  *          name: id
  *          required: true
  *          schema:
  *              type: int(11)
- *          description: ID de la Factura
+ *          description: ID de la compra
  */
-router.get('/find/:id', isExist, find);
+router.get('/:id', isExist, find);
 
 /**
  * @openapi
  * path:
- * /Facturas:
+ * /Carritos:
  *   post:
- *      description: Crea una Factura
- *      summary: Crea una Factura
+ *      description: Crea un compra
+ *      summary: Crea un compra
  *      tags:
- *        - Facturas
+ *        - Carritos
  *      responses:
  *        200:
- *          description: Regresa el token en el header
+ *          description: Regresa el token en el compra
  *        400:
- *          description: Ha ocurrido un error al crear la Factura
+ *          description: Ha ocurrido un error al crear la compra
  *        401:
  *          description: El usuario no tiene los permisos necesarios
  *      requestBody:
@@ -77,22 +77,22 @@ router.get('/find/:id', isExist, find);
  *                  format: int(11)
  *                  example: 1
  */
-router.post('/', isAuthenticated, validateFactura, store);
+router.post('/', isAuthenticated, validateCarrito, store);
 
 /**
  * @openapi
  * path:
- * /Facturas/{id}:
+ * /Carritos/{id}:
  *   put:
- *      description: Actualiza una Factura por el id
- *      summary: Actualiza una Factura por el id
+ *      description: Actualiza un compra por el id
+ *      summary: Actualiza un compra por el id
  *      tags:
- *        - Facturas
+ *        - Carritos
  *      responses:
  *        201:
- *          description: Regresa el token en el header
+ *          description: Regresa el token en el compra
  *        400:
- *          description: Ha ocurrido un error al actualizar la Factura
+ *          description: Ha ocurrido un error al actualizar la compra
  *        401:
  *          description: El usuario no tiene los permisos necesarios
  *      parameters:
@@ -101,7 +101,7 @@ router.post('/', isAuthenticated, validateFactura, store);
  *          required: true
  *          schema:
  *              type: int
- *          description: ID de la Factura
+ *          description: ID de la compra
  *      requestBody:
  *        required: true
  *        content:
@@ -118,20 +118,20 @@ router.post('/', isAuthenticated, validateFactura, store);
  *                  format: int(100)
  *                  example: 1
  */
-router.put('/:id', isAuthenticated, isExist, validateFactura, policy, update);
+router.put('/:id', isAuthenticated, isExist, validateCarrito, policy, update);
 
 /** 
  * @openapi
  * path:
- * /Facturas/{id}:
+ * /Carritos/{id}:
  *   delete:
- *     description: Elimina una Factura
- *     summary: Elimina una Factura
+ *     description: Elimina un compra
+ *     summary: Elimina un compra
  *     tags:
- *       - Facturas
+ *       - Carritos
  *     responses:
  *       200:
- *         description: Regresa el token en el header
+ *         description: Regresa el token en el compra
  *       400:
  *         description: ID invalido
  *     parameters:
@@ -140,7 +140,7 @@ router.put('/:id', isAuthenticated, isExist, validateFactura, policy, update);
  *          required: true
  *          schema:
  *              type: int(11)
- *          description: ID de la Factura a eliminar
+ *          description: ID de la compra a eliminar
  */
 router.delete('/:id', isAuthenticated, isExist, policy, destroy);
 

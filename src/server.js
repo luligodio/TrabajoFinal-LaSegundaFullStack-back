@@ -15,7 +15,10 @@ const app = express();
 //Requerir router
 const router = require('./routes/index.routes');
 const routerP = require('./routes/producto.routes');
-const routerC = require('./routes/categoria.routes');
+const routercat = require('./routes/categoria.routes');
+const routerC = require('./routes/carrito.routes');
+const routerM = require('./routes/mesa.routes');
+
 //Settings
 app.use(cors());
 app.use(express.json());
@@ -25,9 +28,10 @@ app.use(json());
 //Rutas
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(setup));
 app.use('/auth', router);
-// app.use('/mesa', router);
 app.use('/productos', routerP);
-app.use('/categoria', routerC);
+app.use('/carrito', routerC);
+app.use('/categorias', routercat)
+app.use('/mesa', routerM)
 
 app.use((req, res, next) => {
     res.status(404).json({
