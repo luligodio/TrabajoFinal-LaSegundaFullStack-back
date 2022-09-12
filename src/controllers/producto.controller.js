@@ -33,13 +33,16 @@ const store = async(req, res) => {
 
 const update = async(req, res) => {
     const params = req.body
-
     let Productos = await Producto.findByPk(req.params.id);
 
     if (!Productos) {
         return res.status(404).json({ status: 404, msg: "Producto no encontrada" })
     } else {
-        Productos.title = params.title
+        Productos.name = params.name
+        Productos.ingredientes = params.ingredientes
+        Productos.precio = params.precio
+        Productos.stock = params.stock
+        Productos.id_categoria = params.id_categoria
         Productos.save().then(Productos => {
             res.status(201).json({ status: 201, Productos })
         })
@@ -59,8 +62,9 @@ const destroy = async(req, res) => {
 };
 
 //Policy
-const policy = async(req, res, next) => {
-    if (req.user.id === req.Productos.created_by || User.isAdmin(req.user.roles)) {
+const policy = async (req, res, next) => {
+    console.log('reqe',req.user.role)
+    if (req.user.id === req.Productos.created_by || (req.user.role === 3)) {
         next()
     } else {
         res.status(401).json({ msg: "No autorizado" })
