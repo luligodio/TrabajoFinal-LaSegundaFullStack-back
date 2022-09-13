@@ -6,7 +6,7 @@ module.exports = {
             queryInterface.bulkInsert('productos', [{
                     name: 'All Star Burger',
                     ingredientes: '240 gr en Doble Medallón de Carne Vacuna Premium, Panceta Ahumada, Queso Cheddar,Cebolla Caramelizada, Barbacoa Casera y Honey Mustard. Con Fritas',
-                    precio: 1500,
+                    precio: 1,
                     stock: 150,
                     id_categoria: 1,
                     createdAt: new Date(),

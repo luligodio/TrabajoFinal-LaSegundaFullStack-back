@@ -19,7 +19,7 @@ const { validateProducto } = require('../validators/Producto');
  *        400:
  *          description: No hay Productos.
  */
-router.get('/find/all', findAll);
+router.get('', findAll);
 
 /**
  * @openapi
