@@ -19,7 +19,7 @@ const { validateCarrito } = require('../validators/Carrito');
  *        400:
  *          description: No hay Carritos.
  */
-router.get('', findAll);
+router.get('/find/all', findAll);
 
 /**
  * @openapi

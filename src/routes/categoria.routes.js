@@ -19,7 +19,7 @@ const { validateCategoria } = require('../validators/categoria');
  *        400:
  *          description: No hay categorias.
  */
-router.get('', findAll);
+router.get('/find/all', findAll);
 
 /**
  * @openapi

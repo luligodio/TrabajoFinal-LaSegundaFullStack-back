@@ -19,7 +19,7 @@ const { validateMesa } = require('../validators/Mesa');
  *        400:
  *          description: No hay mesas.
  */
-router.get('/', findAll);
+router.get('/find/all', findAll);
 
 /**
  * @openapi
