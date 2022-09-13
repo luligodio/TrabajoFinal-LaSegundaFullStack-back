@@ -63,7 +63,7 @@ const destroy = async(req, res) => {
 
 //Policy
 const policy = async (req, res, next) => {
-    console.log('reqe',req.user.role)
+    // console.log('reqe',req.user.role)
     if (req.user.id === req.Productos.created_by || (req.user.role === 3)) {
         next()
     } else {
