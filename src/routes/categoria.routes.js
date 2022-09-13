@@ -77,7 +77,7 @@ router.get('/:id', isExist, find);
  *                  format: int(11)
  *                  example: 1
  */
-router.post('/', isAuthenticated, validateCategoria, store);
+router.post('/', validateCategoria, store);
 
 /**
  * @openapi
@@ -118,7 +118,7 @@ router.post('/', isAuthenticated, validateCategoria, store);
  *                  format: int(100)
  *                  example: 1
  */
-router.put('/:id', isAuthenticated, isExist, validateCategoria, policy, update);
+router.put('/:id', isExist, validateCategoria, policy, update);
 
 /** 
  * @openapi
@@ -142,6 +142,6 @@ router.put('/:id', isAuthenticated, isExist, validateCategoria, policy, update);
  *              type: int(11)
  *          description: ID de la categoria a eliminar
  */
-router.delete('/:id', isAuthenticated, isExist, policy, destroy);
+router.delete('/:id', isExist, policy, destroy);
 
 module.exports = router

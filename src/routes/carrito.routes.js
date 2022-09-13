@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/carrito.controller');
-const { isAuthenticated } = require('../controllers/index.controller');
+
 const { validateCarrito } = require('../validators/Carrito');
 
 /**
@@ -77,7 +77,7 @@ router.get('/:id', isExist, find);
  *                  format: int(11)
  *                  example: 1
  */
-router.post('/', isAuthenticated, validateCarrito, store);
+router.post('/', validateCarrito, store);
 
 /**
  * @openapi
@@ -118,7 +118,7 @@ router.post('/', isAuthenticated, validateCarrito, store);
  *                  format: int(100)
  *                  example: 1
  */
-router.put('/:id', isAuthenticated, isExist, validateCarrito, policy, update);
+router.put('/:id', isExist, validateCarrito, policy, update);
 
 /** 
  * @openapi
@@ -142,6 +142,6 @@ router.put('/:id', isAuthenticated, isExist, validateCarrito, policy, update);
  *              type: int(11)
  *          description: ID de la compra a eliminar
  */
-router.delete('/:id', isAuthenticated, isExist, policy, destroy);
+router.delete('/:id', isExist, policy, destroy);
 
 module.exports = router

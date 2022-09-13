@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { findAll, find, store, update, destroy, policy, isExist } = require('../controllers/producto.controller');
-const { isAuthenticated } = require('../controllers/index.controller');
+
 const { validateProducto } = require('../validators/Producto');
 
 /**
@@ -77,7 +77,7 @@ router.get('/:id', isExist, find);
  *                  format: int(11)
  *                  example: 1
  */
-router.post('/', isAuthenticated, validateProducto, store);
+router.post('/', validateProducto, store);
 
 /**
  * @openapi
@@ -118,7 +118,7 @@ router.post('/', isAuthenticated, validateProducto, store);
  *                  format: int(100)
  *                  example: 1
  */
-router.put('/:id', isAuthenticated, isExist, validateProducto, policy, update);
+router.put('/:id', isExist, validateProducto, policy, update);
 
 /** 
  * @openapi
@@ -142,6 +142,6 @@ router.put('/:id', isAuthenticated, isExist, validateProducto, policy, update);
  *              type: int(11)
  *          description: ID de la Producto a eliminar
  */
-router.delete('/:id', isAuthenticated, isExist, policy, destroy);
+router.delete('/:id', isExist, policy, destroy);
 
 module.exports = router
